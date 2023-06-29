@@ -11,14 +11,14 @@ linting:
     - source .venv/bin/activate
     - pip install -r requirements.txt
     - pip install flake8
-    - flake8 --exclude=venv
+    - flake8 --exclude=.venv
 
 security-analysis:
   stage: security-analysis
   image: python:3.10
   script:
-    - python -m venv venv
-    - source venv/bin/activate
+    - python -m venv .venv
+    - source .venv/bin/activate
     - pip install -r requirements.txt
     - pip install bandit
     - bandit -r app.py
