@@ -3,4 +3,4 @@ CREATE TABLE token (
   token VARCHAR(255) NOT NULL
 );
 
-INSERT INTO tokens (token) VALUES ('replace-this-token');
+INSERT INTO token (token) VALUES ('replace-this-token');
