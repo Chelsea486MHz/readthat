@@ -1,0 +1,1 @@
+INSERT INTO tokens (token) VALUES ('replace-this-token');
