@@ -3,6 +3,11 @@ version: '3'
 services:
   app:
     build: .
+    environment:
+      DATABASE_NAME: readthat
+      DATABASE_HOST: db
+      DATABASE_USER: user-readthat
+      DATABASE_PASS: super-secure-pw
     ports:
       - 5000:5000
     depends_on:
@@ -12,9 +17,8 @@ services:
     image: mariadb
     restart: always
     environment:
-      MYSQL_DATABASE: db_name
-      MYSQL_USER: db_username
-      MYSQL_PASSWORD: db_password
+      MYSQL_USER: user-readthat
+      MYSQL_PASSWORD: super-secure-pw
       MYSQL_ROOT_PASSWORD: db_password_root
     volumes:
-      - ./initdb:/docker-entrypoint-initdb.d
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
