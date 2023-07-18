@@ -10,7 +10,17 @@ Send a request over HTTP:
 
 The server should return an audio file labeled `output.mp3`.
 
-# Installation
+# Installation with docker-compose
+
+Run the following command:
+
+`$ docker compose up -d`
+
+The service is now running and reachable over HTTP port 5000.
+
+You can and should secure it behind a reverse proxy that uses TLS encryption to ensure there is no data or token leak.
+
+# Installation for development purposes
 
 Configure `config.py`:
 
@@ -23,27 +33,10 @@ DATABASE_USER = 'db_username'
 DATABASE_PASS = 'db_password'
 ```
 
-Configure `docker-compose.yml`:
-
-```
-qMYSQL_DATABASE: db_name
-MYSQL_USER: db_username
-MYSQL_PASSWORD: db_password
-MYSQL_ROOT_PASSWORD: db_password_root
-```
-
 Generate a url-safe token using Python secrets:
 
 `$ python3 -c 'import secrets; print(secrets.token_urlsafe(32));'`
 
-Insert the token in the `./initdb/init.sql` file:
+Insert the token in the database:
 
 `INSERT INTO tokens (token) VALUES ('replace-this-token');`
-
-Deploy with `docker-compose`:
-
-`$ docker compose up -d`
-
-The service is now up and running on port 5000.
-
-You can and should secure it behind a reverse proxy that uses TLS encryption to ensure there is no data or token leak.
