@@ -17,6 +17,7 @@ services:
     image: mariadb
     restart: always
     environment:
+      MYSQL_DATABASE: readthat
       MYSQL_USER: user-readthat
       MYSQL_PASSWORD: super-secure-pw
       MYSQL_ROOT_PASSWORD: db_password_root
