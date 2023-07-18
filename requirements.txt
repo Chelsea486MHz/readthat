@@ -3,3 +3,4 @@ flask_sqlalchemy
 gTTS
 PyMySQL
 gunicorn
+prometheus-flask-exporter
